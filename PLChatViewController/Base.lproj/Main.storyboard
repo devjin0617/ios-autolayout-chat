@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -17,16 +17,28 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DHF-J3-Pds">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWV-87-ldK">
+                                <rect key="frame" x="280" y="562" width="39" height="30"/>
+                                <state key="normal" title="글등록">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doWrtie:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="022-c5-ddZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="DHF-J3-Pds" secondAttribute="trailing" id="do2-ow-5Y8"/>
-                            <constraint firstItem="DHF-J3-Pds" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="kLz-7L-CyO"/>
-                            <constraint firstItem="DHF-J3-Pds" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="t7o-YN-G21"/>
-                            <constraint firstItem="DHF-J3-Pds" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="vOO-ui-W9t"/>
+                            <constraint firstAttribute="centerX" secondItem="GWV-87-ldK" secondAttribute="centerX" id="Oe1-Z3-PLk"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DHF-J3-Pds" secondAttribute="bottom" constant="52" id="VG9-tG-FFE"/>
+                            <constraint firstItem="GWV-87-ldK" firstAttribute="top" secondItem="DHF-J3-Pds" secondAttribute="bottom" constant="14" id="juC-9n-glp"/>
+                            <constraint firstItem="DHF-J3-Pds" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="qGa-Vy-3ur"/>
+                            <constraint firstItem="DHF-J3-Pds" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="tZW-jl-sfK"/>
+                            <constraint firstAttribute="trailing" secondItem="DHF-J3-Pds" secondAttribute="trailing" id="tZr-Xq-ZhA"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="GWV-87-ldK" secondAttribute="bottom" constant="8" id="w0G-qT-JB9"/>
                         </constraints>
                     </view>
                     <connections>

@@ -15,5 +15,8 @@
 @property (nonatomic, strong) IBOutlet UITableView* chatTableView;
 
 
+- (IBAction)doWrtie:(id)sender;
+
+
 @end
 

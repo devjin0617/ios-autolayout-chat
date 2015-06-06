@@ -44,25 +44,28 @@
                           @"hello world", @"message", nil];
     [chatData addObject:item];
     
-    item = [[NSDictionary alloc]initWithObjectsAndKeys:
-            @"jin", @"name",
-            @"hello world,hello world,hello world,hello world,", @"message", nil];
-    [chatData addObject:item];
-    
-    item = [[NSDictionary alloc]initWithObjectsAndKeys:
-            @"jin", @"name",
-            @"hello world", @"message", nil];
-    [chatData addObject:item];
-    
-    item = [[NSDictionary alloc]initWithObjectsAndKeys:
-            @"jin", @"name",
-            @"hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,", @"message", nil];
-    [chatData addObject:item];
-    
-    item = [[NSDictionary alloc]initWithObjectsAndKeys:
-            @"jin", @"name",
-            @"hello world,hello world,", @"message", nil];
-    [chatData addObject:item];
+    for (int i=0; i<10; i++) {
+        item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"jin", @"name",
+                @"hello world,hello world,hello world,hello world,", @"message", nil];
+        [chatData addObject:item];
+        
+        item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"jin", @"name",
+                @"hello world", @"message", nil];
+        [chatData addObject:item];
+        
+        item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"jin", @"name",
+                @"hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,", @"message", nil];
+        [chatData addObject:item];
+        
+        item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"jin", @"name",
+                @"hello world,hello world,", @"message", nil];
+        [chatData addObject:item];
+
+    }
     
     
     
@@ -92,10 +95,10 @@
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 40.f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 40.f;
+//}
 
 - (void)configureCell:(PLChatMessageTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
@@ -117,6 +120,33 @@
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
+}
+
+
+- (IBAction)doWrtie:(id)sender {
+    
+    NSArray *randomArray = [[NSArray alloc] initWithObjects:
+                            @"hello world,hello world",
+                            @"hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world",
+                            @"hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world",
+                            @"hello world,hello world,hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world,hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world,hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world,hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world,hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world",
+                            @"hello world,hello world,hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world",
+                            @"hello world,hello world",
+                            @"hello world,hello world,hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world",
+                            @"hello world,hello world hello world,hello world"
+                            , nil];
+    
+    int nRnd = arc4random() % [randomArray count];
+    
+    
+    NSDictionary *item = [[NSDictionary alloc]initWithObjectsAndKeys:
+            @"jin", @"name",
+            [randomArray objectAtIndex:nRnd], @"message", nil];
+    [chatData addObject:item];
+    
+    [_chatTableView reloadData];
+    [_chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatData count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
 }
 
 @end
