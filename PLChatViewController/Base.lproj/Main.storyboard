@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,19 +22,38 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWV-87-ldK">
-                                <rect key="frame" x="280" y="562" width="39" height="30"/>
-                                <state key="normal" title="글등록">
+                                <rect key="frame" x="261" y="562" width="78" height="30"/>
+                                <state key="normal" title="상대방글등록">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doWrtie:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="022-c5-ddZ"/>
+                                    <action selector="doYouWrtie:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7EJ-fc-ZgI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RzO-AS-nTX">
+                                <rect key="frame" x="16" y="562" width="52" height="30"/>
+                                <state key="normal" title="공지등록">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0V-7W-ca5">
+                                <rect key="frame" x="532" y="562" width="52" height="30"/>
+                                <state key="normal" title="내글등록">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doMeWrite:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FFn-8l-oqC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="h0V-7W-ca5" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="BhY-pB-Nd0"/>
                             <constraint firstAttribute="centerX" secondItem="GWV-87-ldK" secondAttribute="centerX" id="Oe1-Z3-PLk"/>
+                            <constraint firstItem="h0V-7W-ca5" firstAttribute="baseline" secondItem="GWV-87-ldK" secondAttribute="baseline" id="Pul-of-gYq"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DHF-J3-Pds" secondAttribute="bottom" constant="52" id="VG9-tG-FFE"/>
+                            <constraint firstItem="RzO-AS-nTX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="YkJ-fs-zGg"/>
+                            <constraint firstItem="RzO-AS-nTX" firstAttribute="baseline" secondItem="GWV-87-ldK" secondAttribute="baseline" id="cl1-AU-MRM"/>
                             <constraint firstItem="GWV-87-ldK" firstAttribute="top" secondItem="DHF-J3-Pds" secondAttribute="bottom" constant="14" id="juC-9n-glp"/>
                             <constraint firstItem="DHF-J3-Pds" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="qGa-Vy-3ur"/>
                             <constraint firstItem="DHF-J3-Pds" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="tZW-jl-sfK"/>

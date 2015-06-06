@@ -13,6 +13,9 @@
     NSMutableArray *chatData;
     
     PLChatMessageTableViewCell *_stubCell;
+    PLChatMessageTableViewCell *_stubMeCell;
+    
+    PLChatMessageTableViewCell *_mainCell;
 }
 
 @end
@@ -25,9 +28,13 @@
     
     chatData = [[NSMutableArray alloc]init];
     
-    UINib *cellNib = [UINib nibWithNibName:@"PLChatTableViewCell" bundle:nil];
-    [_chatTableView registerNib:cellNib forCellReuseIdentifier:@"PLChatMessageTableViewCell"];
-    _stubCell = [cellNib instantiateWithOwner:nil options:nil][0];
+    UINib *cellYouNib = [UINib nibWithNibName:@"PLChatTableViewYouCell" bundle:nil];
+    UINib *cellMeNib = [UINib nibWithNibName:@"PLChatTableViewMeCell" bundle:nil];
+    
+    [_chatTableView registerNib:cellYouNib forCellReuseIdentifier:@"PLChatMessageTableViewYouCell"];
+    [_chatTableView registerNib:cellMeNib forCellReuseIdentifier:@"PLChatMessageTableViewMeCell"];
+    _stubCell = [cellYouNib instantiateWithOwner:nil options:nil][0];
+    _stubMeCell = [cellMeNib instantiateWithOwner:nil options:nil][0];
     
     self.chatTableView.delegate = self;
     self.chatTableView.dataSource = self;
@@ -46,25 +53,29 @@
     
     for (int i=0; i<10; i++) {
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"NO", @"isMe",
                 @"jin", @"name",
                 @"hello world,hello world,hello world,hello world,", @"message", nil];
         [chatData addObject:item];
         
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"NO", @"isMe",
                 @"jin", @"name",
                 @"hello world", @"message", nil];
         [chatData addObject:item];
         
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"NO", @"isMe",
                 @"jin", @"name",
                 @"hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,", @"message", nil];
         [chatData addObject:item];
         
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                @"NO", @"isMe",
                 @"jin", @"name",
                 @"hello world,hello world,", @"message", nil];
         [chatData addObject:item];
-
+        
     }
     
     
@@ -87,14 +98,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    [self configureCell:_stubCell atIndexPath:indexPath];
-    [_stubCell layoutSubviews];
-    CGFloat height = [_stubCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    [self configureCell:nil atIndexPath:indexPath];
+    [_mainCell layoutSubviews];
+    CGFloat height = [_mainCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     return height + 1;
-
+    
 }
 
+// what is estimatedHeightForRowAtIndexPath? ~_~........ i don't no.....
 //- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return 40.f;
@@ -104,27 +115,48 @@
 {
     NSDictionary *item = [chatData objectAtIndex:[indexPath row]];
     
-    cell.messageLabel.text = [item valueForKey:@"message"];
-    cell.nameLabel.text = [item valueForKey:@"name"];
+    if([[item valueForKey:@"isMe"] isEqualToString:@"YES"]) {
+        _mainCell = cell==nil?_stubMeCell:cell;
+        [_mainCell.bubbleBoxImageView setImage:[[UIImage imageNamed:@"bubblebox_me.png"] stretchableImageWithLeftCapWidth:22 topCapHeight:25]];
+    } else {
+        _mainCell = cell==nil?_stubCell:cell;;
+        [_mainCell.bubbleBoxImageView setImage:[[UIImage imageNamed:@"bubblebox_you.png"] stretchableImageWithLeftCapWidth:33 topCapHeight:25]];
+    }
     
+    _mainCell.messageLabel.text = [item valueForKey:@"message"];
     
-    [cell.bubbleBoxImageView setImage:[[UIImage imageNamed:@"bubblebox_you.png"] stretchableImageWithLeftCapWidth:33 topCapHeight:25]];
-
+    @try {
+        _mainCell.nameLabel.text = [item valueForKey:@"name"];
+    } @catch(NSException *e) {
+        
+    }
+    
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PLChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PLChatMessageTableViewCell" forIndexPath:indexPath];
-
+    NSDictionary *item = [chatData objectAtIndex:[indexPath row]];
+    
+    
+    PLChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[[item valueForKey:@"isMe"] isEqualToString:@"YES"] ? @"PLChatMessageTableViewMeCell" : @"PLChatMessageTableViewYouCell" forIndexPath:indexPath];
+    
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
 
-- (IBAction)doWrtie:(id)sender {
+- (IBAction)doYouWrtie:(id)sender {
+    [self doWrite:NO];
     
+}
+
+- (IBAction)doMeWrite:(id)sender {
+    [self doWrite:YES];
+}
+
+- (void)doWrite:(BOOL)isMe {
     NSArray *randomArray = [[NSArray alloc] initWithObjects:
                             @"hello world,hello world",
                             @"hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world, hello world,hello world",
@@ -138,15 +170,15 @@
     
     int nRnd = arc4random() % [randomArray count];
     
-    
+    NSString *strIsMe = isMe ? @"YES" : @"NO";
     NSDictionary *item = [[NSDictionary alloc]initWithObjectsAndKeys:
-            @"jin", @"name",
-            [randomArray objectAtIndex:nRnd], @"message", nil];
+                          strIsMe, @"isMe",
+                          @"jin", @"name",
+                          [randomArray objectAtIndex:nRnd], @"message", nil];
     [chatData addObject:item];
     
     [_chatTableView reloadData];
     [_chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatData count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    
 }
 
 @end

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PLChatMessageTableViewMeCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PLChatMessageTableViewMeCell" rowHeight="88" id="I1K-ti-KKe" customClass="PLChatMessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I1K-ti-KKe" id="eio-dO-cpR">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubblebox_me.png" translatesAutoresizingMaskIntoConstraints="NO" id="188-MI-Tfj">
+                        <rect key="frame" x="247" y="11" width="56" height="50"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MSG" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-mq-KlF">
+                        <rect key="frame" x="257" y="25" width="33" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="Sl6-gO-XmI"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="118" id="eBx-Pf-02l"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eBx-Pf-02l"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015.01.01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzR-4M-EPU">
+                        <rect key="frame" x="227" y="64" width="63" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="et0-Mj-5KE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cCS-mq-KlF" firstAttribute="leading" secondItem="188-MI-Tfj" secondAttribute="leading" constant="10" id="0sq-qN-r5c"/>
+                    <constraint firstItem="188-MI-Tfj" firstAttribute="leading" secondItem="cCS-mq-KlF" secondAttribute="leading" constant="-26" id="2Q9-iO-NXD"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="188-MI-Tfj" secondAttribute="bottom" constant="17" id="7L6-GC-r8p"/>
+                    <constraint firstItem="cCS-mq-KlF" firstAttribute="top" secondItem="eio-dO-cpR" secondAttribute="topMargin" constant="17" id="Amg-lr-HQR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="188-MI-Tfj" secondAttribute="trailing" constant="9" id="FXV-gd-Ofy"/>
+                    <constraint firstItem="188-MI-Tfj" firstAttribute="width" secondItem="cCS-mq-KlF" secondAttribute="width" multiplier="0.75" constant="-10" id="UL7-ED-AZh"/>
+                    <constraint firstItem="188-MI-Tfj" firstAttribute="top" secondItem="cCS-mq-KlF" secondAttribute="bottom" constant="-35" id="WLP-Qe-BEf"/>
+                    <constraint firstItem="cCS-mq-KlF" firstAttribute="leading" secondItem="188-MI-Tfj" secondAttribute="trailing" constant="-136" id="WQn-Cm-h7V"/>
+                    <constraint firstItem="188-MI-Tfj" firstAttribute="top" secondItem="eio-dO-cpR" secondAttribute="topMargin" constant="3" id="bnK-Na-jqR"/>
+                    <constraint firstItem="cCS-mq-KlF" firstAttribute="leading" secondItem="188-MI-Tfj" secondAttribute="trailing" constant="-104" id="kyE-T2-hec"/>
+                    <constraint firstItem="LzR-4M-EPU" firstAttribute="trailing" secondItem="cCS-mq-KlF" secondAttribute="trailing" id="mTx-Ac-D46"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="cCS-mq-KlF" secondAttribute="trailing" constant="22" id="nIZ-A0-uhr"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="188-MI-Tfj" secondAttribute="bottom" constant="18" id="vtG-w0-hML"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="cCS-mq-KlF" secondAttribute="bottom" constant="33" id="wcG-DU-VFP"/>
+                    <constraint firstItem="LzR-4M-EPU" firstAttribute="top" secondItem="188-MI-Tfj" secondAttribute="bottom" constant="3" id="y5B-yV-ZBj"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="2Q9-iO-NXD"/>
+                        <exclude reference="7L6-GC-r8p"/>
+                        <exclude reference="UL7-ED-AZh"/>
+                        <exclude reference="WLP-Qe-BEf"/>
+                        <exclude reference="WQn-Cm-h7V"/>
+                        <exclude reference="kyE-T2-hec"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bubbleBoxImageView" destination="188-MI-Tfj" id="HlV-cf-Za3"/>
+                <outlet property="datetmeLabel" destination="LzR-4M-EPU" id="pO5-VJ-0ej"/>
+                <outlet property="messageLabel" destination="cCS-mq-KlF" id="SFQ-pH-PON"/>
+            </connections>
+            <point key="canvasLocation" x="270" y="423"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bubblebox_me.png" width="54" height="50"/>
+    </resources>
+</document>

@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PLChatMessageTableViewCell" rowHeight="113" id="afA-aH-zyA" customClass="PLChatMessageTableViewCell">
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="PLChatMessageTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PLChatMessageTableViewYouCell" rowHeight="113" id="afA-aH-zyA" customClass="PLChatMessageTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="afA-aH-zyA" id="w5N-6k-4tR">
@@ -34,7 +34,7 @@
                         <rect key="frame" x="56" y="37" width="69" height="50"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MSG" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcI-1S-qVw">
-                        <rect key="frame" x="82" y="51" width="33" height="21"/>
+                        <rect key="frame" x="77" y="51" width="33" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="7Lu-X6-uLF"/>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="118" id="KCX-Ud-WN4"/>
@@ -59,7 +59,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="jcI-1S-qVw" firstAttribute="leading" secondItem="w5N-6k-4tR" secondAttribute="leadingMargin" constant="74" id="2u7-fc-6oL"/>
+                    <constraint firstItem="jcI-1S-qVw" firstAttribute="leading" secondItem="w5N-6k-4tR" secondAttribute="leadingMargin" constant="69" id="2u7-fc-6oL"/>
                     <constraint firstItem="s0S-sS-g0g" firstAttribute="top" secondItem="guK-TS-Los" secondAttribute="bottom" constant="3" id="7nU-uP-Ymf"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jcI-1S-qVw" secondAttribute="bottom" constant="32" id="8vr-u1-sVR"/>
                     <constraint firstItem="guK-TS-Los" firstAttribute="top" secondItem="DiM-VK-PED" secondAttribute="bottom" constant="8" id="Hpt-DM-qRv"/>
@@ -67,10 +67,10 @@
                     <constraint firstItem="guK-TS-Los" firstAttribute="leading" secondItem="w5N-6k-4tR" secondAttribute="leadingMargin" constant="48" id="Kf9-Wf-abl"/>
                     <constraint firstItem="guK-TS-Los" firstAttribute="top" secondItem="jcI-1S-qVw" secondAttribute="bottom" constant="-35" id="NZ4-PM-okI"/>
                     <constraint firstItem="guK-TS-Los" firstAttribute="width" secondItem="jcI-1S-qVw" secondAttribute="width" multiplier="0.75" constant="-10" id="OD1-RO-GGW"/>
-                    <constraint firstItem="s0S-sS-g0g" firstAttribute="trailing" secondItem="jcI-1S-qVw" secondAttribute="trailing" id="QBO-aw-Ouo"/>
+                    <constraint firstItem="s0S-sS-g0g" firstAttribute="trailing" secondItem="jcI-1S-qVw" secondAttribute="trailing" constant="5" id="QBO-aw-Ouo"/>
                     <constraint firstItem="jcI-1S-qVw" firstAttribute="leading" secondItem="guK-TS-Los" secondAttribute="trailing" constant="-104" id="Svn-mC-c74"/>
                     <constraint firstAttribute="bottomMargin" secondItem="guK-TS-Los" secondAttribute="bottom" constant="17" id="UxU-Rv-mFq"/>
-                    <constraint firstItem="guK-TS-Los" firstAttribute="trailing" secondItem="jcI-1S-qVw" secondAttribute="trailing" constant="10" id="VpI-xW-wXS"/>
+                    <constraint firstItem="guK-TS-Los" firstAttribute="trailing" secondItem="jcI-1S-qVw" secondAttribute="trailing" constant="15" id="VpI-xW-wXS"/>
                     <constraint firstItem="DiM-VK-PED" firstAttribute="leading" secondItem="SnI-ut-fAl" secondAttribute="trailing" constant="8" id="Z1u-SH-UkC"/>
                     <constraint firstItem="guK-TS-Los" firstAttribute="leading" secondItem="jcI-1S-qVw" secondAttribute="leading" constant="-26" id="f6Y-4Q-O2N"/>
                     <constraint firstAttribute="bottomMargin" secondItem="guK-TS-Los" secondAttribute="bottom" constant="17" id="gDl-LJ-Rma"/>
