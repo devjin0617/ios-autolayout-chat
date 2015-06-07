@@ -18,6 +18,7 @@
 - (void)doWrite:(BOOL)isMe;
 - (IBAction)doYouWrtie:(id)sender;
 - (IBAction)doMeWrite:(id)sender;
+- (IBAction)doNoticeWrite:(id)sender;
 
 
 @end

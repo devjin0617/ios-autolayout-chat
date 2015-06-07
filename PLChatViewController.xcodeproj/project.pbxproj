@@ -21,6 +21,8 @@
 		3CDF7EFF1B21E3D20058F01F /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF7EFE1B21E3D20058F01F /* 02.jpg */; };
 		3CDF7F021B21E5D20058F01F /* bubblebox_me.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF7F001B21E5D20058F01F /* bubblebox_me.png */; };
 		3CDF7F031B21E5D20058F01F /* bubblebox_you.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF7F011B21E5D20058F01F /* bubblebox_you.png */; };
+		3CF1E1CE1B248D6000B86040 /* PLChatTableViewNoticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF1E1CD1B248D6000B86040 /* PLChatTableViewNoticeCell.xib */; };
+		3CF1E1D11B248E8700B86040 /* PLChatTableViewNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF1E1D01B248E8700B86040 /* PLChatTableViewNoticeCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		3CDF7EFE1B21E3D20058F01F /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
 		3CDF7F001B21E5D20058F01F /* bubblebox_me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubblebox_me.png; path = Resource/bubblebox_me.png; sourceTree = "<group>"; };
 		3CDF7F011B21E5D20058F01F /* bubblebox_you.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubblebox_you.png; path = Resource/bubblebox_you.png; sourceTree = "<group>"; };
+		3CF1E1CD1B248D6000B86040 /* PLChatTableViewNoticeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PLChatTableViewNoticeCell.xib; sourceTree = "<group>"; };
+		3CF1E1CF1B248E8700B86040 /* PLChatTableViewNoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLChatTableViewNoticeCell.h; sourceTree = "<group>"; };
+		3CF1E1D01B248E8700B86040 /* PLChatTableViewNoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLChatTableViewNoticeCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +114,9 @@
 				3CDF7EF81B21E3660058F01F /* PLChatMessageTableViewCell.h */,
 				3CDF7EF91B21E3660058F01F /* PLChatMessageTableViewCell.m */,
 				3C3170751B23362000287764 /* PLChatTableViewMeCell.xib */,
+				3CF1E1CD1B248D6000B86040 /* PLChatTableViewNoticeCell.xib */,
+				3CF1E1CF1B248E8700B86040 /* PLChatTableViewNoticeCell.h */,
+				3CF1E1D01B248E8700B86040 /* PLChatTableViewNoticeCell.m */,
 			);
 			path = PLChatViewController;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 				3CDF7F031B21E5D20058F01F /* bubblebox_you.png in Resources */,
 				3CDF7EE11B21E1F30058F01F /* LaunchScreen.xib in Resources */,
 				3CDF7EDE1B21E1F30058F01F /* Images.xcassets in Resources */,
+				3CF1E1CE1B248D6000B86040 /* PLChatTableViewNoticeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +269,7 @@
 				3CDF7EFA1B21E3660058F01F /* PLChatMessageTableViewCell.m in Sources */,
 				3CDF7ED61B21E1F30058F01F /* AppDelegate.m in Sources */,
 				3CDF7ED31B21E1F30058F01F /* main.m in Sources */,
+				3CF1E1D11B248E8700B86040 /* PLChatTableViewNoticeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

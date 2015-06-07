@@ -35,6 +35,9 @@
                                 <state key="normal" title="공지등록">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doNoticeWrite:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WyQ-Ob-QOX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0V-7W-ca5">
                                 <rect key="frame" x="532" y="562" width="52" height="30"/>

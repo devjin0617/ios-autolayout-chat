@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PLChatMessageTableViewCell.h"
+#import "PLChatTableViewNoticeCell.h"
 
 @interface ViewController () {
     NSMutableArray *chatData;
@@ -47,31 +48,32 @@
 - (void)loadData {
     
     NSDictionary *item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                          @"you", @"type",
                           @"jin", @"name",
                           @"hello world", @"message", nil];
     [chatData addObject:item];
     
     for (int i=0; i<10; i++) {
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
-                @"NO", @"isMe",
+                @"you", @"type",
                 @"jin", @"name",
                 @"hello world,hello world,hello world,hello world,", @"message", nil];
         [chatData addObject:item];
         
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
-                @"NO", @"isMe",
+                @"you", @"type",
                 @"jin", @"name",
                 @"hello world", @"message", nil];
         [chatData addObject:item];
         
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
-                @"NO", @"isMe",
+                @"you", @"type",
                 @"jin", @"name",
                 @"hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,hello world,", @"message", nil];
         [chatData addObject:item];
         
         item = [[NSDictionary alloc]initWithObjectsAndKeys:
-                @"NO", @"isMe",
+                @"you", @"type",
                 @"jin", @"name",
                 @"hello world,hello world,", @"message", nil];
         [chatData addObject:item];
@@ -98,8 +100,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSDictionary *item = [chatData objectAtIndex:[indexPath row]];
+    
+    if([[item valueForKey:@"type"] isEqualToString:@"notice"]) {
+        return 40.0f;
+    }
+    
     [self configureCell:nil atIndexPath:indexPath];
-    [_mainCell layoutSubviews];
+//    [_mainCell layoutSubviews];
     CGFloat height = [_mainCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     return height + 1;
     
@@ -115,12 +123,14 @@
 {
     NSDictionary *item = [chatData objectAtIndex:[indexPath row]];
     
-    if([[item valueForKey:@"isMe"] isEqualToString:@"YES"]) {
+    if([[item valueForKey:@"type"] isEqualToString:@"me"]) {
         _mainCell = cell==nil?_stubMeCell:cell;
         [_mainCell.bubbleBoxImageView setImage:[[UIImage imageNamed:@"bubblebox_me.png"] stretchableImageWithLeftCapWidth:22 topCapHeight:25]];
-    } else {
+    } else if([[item valueForKey:@"type"] isEqualToString:@"you"]) {
         _mainCell = cell==nil?_stubCell:cell;;
         [_mainCell.bubbleBoxImageView setImage:[[UIImage imageNamed:@"bubblebox_you.png"] stretchableImageWithLeftCapWidth:33 topCapHeight:25]];
+    } else {
+        return;
     }
     
     _mainCell.messageLabel.text = [item valueForKey:@"message"];
@@ -138,12 +148,38 @@
     
     NSDictionary *item = [chatData objectAtIndex:[indexPath row]];
     
+    NSString *strType = [item valueForKey:@"type"];
     
-    PLChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[[item valueForKey:@"isMe"] isEqualToString:@"YES"] ? @"PLChatMessageTableViewMeCell" : @"PLChatMessageTableViewYouCell" forIndexPath:indexPath];
+    PLChatMessageTableViewCell *cell = nil;
+    
+    if([strType isEqualToString:@"me"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PLChatMessageTableViewMeCell" forIndexPath:indexPath];
+    } else if([strType isEqualToString:@"you"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PLChatMessageTableViewYouCell" forIndexPath:indexPath];
+    } else {
+        PLChatTableViewNoticeCell *noticeCell = [tableView dequeueReusableCellWithIdentifier:@"PLChatTableViewNoticeCell"];
+                
+        if(noticeCell == nil) {
+            noticeCell = [[[NSBundle mainBundle] loadNibNamed:@"PLChatTableViewNoticeCell" owner:nil options:0] objectAtIndex:0];
+        }
+        
+        noticeCell.noticeLabel.text = [item valueForKey:@"message"];
+        
+        return noticeCell;
+
+    }
+    
     
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
+    
 }
 
 
@@ -154,6 +190,27 @@
 
 - (IBAction)doMeWrite:(id)sender {
     [self doWrite:YES];
+}
+
+- (IBAction)doNoticeWrite:(id)sender {
+    
+    NSArray *randomArray = [[NSArray alloc] initWithObjects:
+                                @"홍길동님이 초대되었습니다.",
+                                @"홍길동님이 나갔습니다.",
+                                @"새로운방에 초대되었습니다.",
+                                nil];
+    
+    int nRnd = arc4random() % [randomArray count];
+    
+    NSDictionary *item = [[NSDictionary alloc]initWithObjectsAndKeys:
+                          @"notice", @"type",
+                          @"jin", @"name",
+                          [randomArray objectAtIndex:nRnd], @"message", nil];
+    [chatData addObject:item];
+    
+    [_chatTableView reloadData];
+    [_chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatData count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
 }
 
 - (void)doWrite:(BOOL)isMe {
@@ -170,9 +227,9 @@
     
     int nRnd = arc4random() % [randomArray count];
     
-    NSString *strIsMe = isMe ? @"YES" : @"NO";
+    NSString *strIsMe = isMe ? @"me" : @"you";
     NSDictionary *item = [[NSDictionary alloc]initWithObjectsAndKeys:
-                          strIsMe, @"isMe",
+                          strIsMe, @"type",
                           @"jin", @"name",
                           [randomArray objectAtIndex:nRnd], @"message", nil];
     [chatData addObject:item];
