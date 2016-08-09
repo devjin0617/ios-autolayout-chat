@@ -1,12 +1,13 @@
 # iOS Chat UI Library
 
-Autolayout 감도 잡아볼겸 채팅쪽 UI를 만지고 있습니다.
+project is chat example to used autolayout for ios
 
-# 어떻게?
+# how to use
 
-그냥 `Clone`해서 실행하면되요! (단, Mac에서만 가능합니다)
+just git clone! and project build, start (but, use the mac)
 
-- - -
+# feature is
 
-# 코드리뷰를 위한 테스트진행중
- - 하나, 둘, 셋!
+- many screen size of device supports
+- custom chat bubble ui
+- if receive to new message. show notification view
