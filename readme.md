@@ -2,6 +2,8 @@
 
 project is chat example to used autolayout for ios
 
+![https://github.com/devjin0617/ios-autolayout-chat/blob/master/chat_image.png?raw=true](https://github.com/devjin0617/ios-autolayout-chat/blob/master/chat_image.png?raw=true)
+
 # how to use
 
 just git clone! and project build, start (but, use the mac)
